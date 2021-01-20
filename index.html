@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>クイズ・ミリオネア</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <p id="name">You</p>
+        <p id="money">Price</p>
+        <ul id="lifeline">
+            <li id="fifty-fifty">50×50</li>
+            <li id="telephone">TEL</li>
+            <li id="audienc">AUD</li>
+        </ul>
+        <div id="usedFifty" class="used">
+            <img src="used.png" alt="">
+        </div>
+        <div id="usedTel" class="used">
+            <img src="used.png" alt="">
+        </div>
+        <div id="usedAud" class="used">
+            <img src="used.png" alt="">
+        </div>
+    </header>
+    <main>
+        <!--       telephone-->
+        <span id="tel">60</span>
+        <!--        audience-->
+        <div id="audience">
+            <ul>
+                <li>
+                    <div id="bar1" class="bar"></div>
+                    <p id="answer1" class="answer"></p>
+                </li>
+                <li>
+                    <div id="bar2" class="bar"></div>
+                    <p id="answer2" class="answer"></p>
+                </li>
+                <li>
+                    <div id="bar3" class="bar"></div>
+                    <p id="answer3" class="answer"></p>
+                </li>
+                <li>
+                    <div id="bar4" class="bar"></div>
+                    <p id="answer4" class="answer"></p>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+    <footer>
+        <div id="quiz">
+            <p id="ask">
+                問題文
+            </p>
+            <ul id="answer">
+                <li id="a" class="select">A.</li>
+                <li id="b" class="select">B.</li>
+                <li id="c" class="select">C.</li>
+                <li id="d" class="select">D.</li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body></html>
