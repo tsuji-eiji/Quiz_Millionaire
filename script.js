@@ -1,11 +1,5 @@
 'use strict';
-//名前入力
-let name = window.prompt('あなたの人生を変えるかもしれないクイズ・ミリオネア。\nまずは、あなたの名前を入力してください');
-if (name === '') {
-	name = '　';
-}
 
-document.getElementById('name').textContent = name;
 let num = 0; //いま、何問目？？
 let price = 1000; //賞金額
 
@@ -18,13 +12,29 @@ let audFlg = true;
 let questions = new Array;
 let question = new Array;
 
-init();
+let ans = '';
+let teltime = 61;
+
+document.getElementById('namebtn').addEventListener('click', function () {
+	document.getElementById('name').textContent = document.getElementById('center-input').value;
+	document.getElementById('header').style.visibility = 'visible';
+	quizMode();
+	init();
+});
+
+function quizMode() {
+	document.getElementById('quiz').style.visibility = 'visible';
+	document.getElementById('center').style.visibility = 'hidden';
+};
+
+function msgMode() {
+	document.getElementById('quiz').style.visibility = 'hidden';
+	document.getElementById('center').style.visibility = 'visible';
+};
 
 function init() {
-
-	//csv読み込み
+	//問題の作成
 	questions = getCsv();
-
 	//ランダムに並び替え
 	questions = shuffle(questions);
 
@@ -65,7 +75,6 @@ function getCsv() {
 }
 
 
-
 //配列をシャッフル
 function shuffle(array) {
 	for (let i = (array.length - 1); 0 < i; i--) {
@@ -79,77 +88,91 @@ function shuffle(array) {
 	return array;
 }
 
-//回答を選択したときの処理
+////回答を選択したときの処理
 const ansArray = document.getElementsByClassName('select');
 for (let item of ansArray) {
-	item.addEventListener('click', function () {
-		const ans = item.id;
+	item.addEventListener('click', function (e) {
+		resetAns();
+		ans = e.target.id;
 		coloredAns(ans, '#FDAE1D');
 		const selectedAns = document.getElementById(ans).textContent;
-		const waitTime = 1000;
-		if (item.textContent !== '　') {
-			if (window.confirm('ファイナルアンサー？？')) {
-				setTimeout(checkAns, 900);
-				switch (ans) {
-					case 'a':
-						if (question[6] === 1) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-					case 'b':
-						if (question[6] === 2) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-					case 'c':
-						if (question[6] === 3) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-					case 'd':
-						if (question[6] === 4) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-				}
-			} else {
-				coloredAns(ans, null);
+		document.getElementById('center-content').innerHTML = `<p>${selectedAns}、ファイナルアンサー？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
+		document.getElementById('center').style.visibility = 'visible';
+		//ファイナルアンサーでいいえを選んだとき
+		document.getElementById('nobtn').addEventListener('click', function () {
+			document.getElementById('center').style.visibility = 'hidden';
+			resetAns();
+		});
+		//ファイナルアンサーではいを選んだとき
+		document.getElementById('yesbtn').addEventListener('click', function () {
+			const waitTime = 1000;
+			switch (ans) {
+				case 'a':
+					if (question[6] === 1) {
+						setTimeout(clear, waitTime);
+					} else {
+						setTimeout(failed, waitTime);
+					}
+					break;
+				case 'b':
+					if (question[6] === 2) {
+						setTimeout(clear, waitTime);
+					} else {
+						setTimeout(failed, waitTime);
+					}
+					break;
+				case 'c':
+					if (question[6] === 3) {
+						setTimeout(clear, waitTime);
+					} else {
+						setTimeout(failed, waitTime);
+					}
+					break;
+				case 'd':
+					if (question[6] === 4) {
+						setTimeout(clear, waitTime);
+					} else {
+						setTimeout(failed, waitTime);
+					}
+					break;
 			}
-
-		}
-	}, false);
-}
-
+		});
+	})
+};
 
 //回答が正解だったとき
 function clear() {
-	window.alert('正解！！');
-	if (num < 5) {
-		price *= 10;
-		question = makeQuestion(questions);
-	} else {
-		window.alert('ミリオネア達成おめでとう！！');
-		retry();
-	}
+	document.getElementById('quiz').style.visibility = 'hidden';
+	document.getElementById('center-content').innerHTML = `<p>正解！！</p><button id="nextbtn" class="btn">次へ</button>`;
+	document.getElementById('nextbtn').addEventListener('click', function () {
+		if (num < 5) {
+			price *= 10;
+			question = makeQuestion(questions);
+			quizMode();
+		} else {
+			document.getElementById('center-content').innerHTML = `<p>ミリオネア達成おめでとう！！</p><button id="nextbtn" class="btn">次へ</button>`;
+			document.getElementById('nextbtn').addEventListener('click', function () {
+				retry();
+			})
+		}
+	})
+
 }
 
 //回答が不正解だったとき
 function failed() {
-	window.alert('残念！！');
-	setTimeout(retry, 1000);
+	document.getElementById('quiz').style.visibility = 'hidden';
+	document.getElementById('center-content').innerHTML = `<p>残念！！</p><button id="nextbtn" class="btn">次へ</button>`;
+	document.getElementById('nextbtn').addEventListener('click', function () {
+		setTimeout(retry, 1000);
+	})
 }
 
 //再挑戦confirm
 function retry() {
-	if (window.confirm('再挑戦しますか？')) {
+	document.getElementById('center-content').innerHTML = `<p>再挑戦しますか？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
+	//再挑戦する場合
+	document.getElementById('yesbtn').addEventListener('click', function () {
 		num = 0;
 		price = 1000;
 		fiftyFlg = true;
@@ -158,18 +181,13 @@ function retry() {
 		document.getElementById('usedFifty').style.visibility = 'hidden';
 		document.getElementById('usedTel').style.visibility = 'hidden';
 		document.getElementById('usedAud').style.visibility = 'hidden';
+		quizMode();
 		init();
-	} else {
-		resetAns();
-		document.getElementById('ask').textContent = '　';
-		document.getElementById('a').textContent = '　';
-		document.getElementById('b').textContent = '　';
-		document.getElementById('c').textContent = '　';
-		document.getElementById('d').textContent = '　';
-		fiftyFlg = false;
-		telFlg = false;
-		audFlg = false;
-	}
+	})
+	//再挑戦しない場合
+	document.getElementById('nobtn').addEventListener('click', function () {
+		document.getElementById('center-content').innerHTML = `<p>お疲れさまでした。<br>再挑戦する場合はページを再読み込みしてください。</p>`;
+	})
 }
 
 //不正解時の答え合わせ
@@ -209,7 +227,10 @@ function resetAns() {
 document.getElementById('fifty-fifty').addEventListener('click',
 	function () {
 		if (fiftyFlg) {
-			if (window.confirm('50:50を使いますか?')) {
+			document.getElementById('center').style.visibility = 'visible';
+			document.getElementById('center-content').innerHTML = `<p>50:50を使用しますか？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
+			//使用する場合
+			document.getElementById('yesbtn').addEventListener('click', function () {
 				fiftyFlg = false;
 				let arrayAnswer = '';
 				switch (question[6]) {
@@ -231,7 +252,12 @@ document.getElementById('fifty-fifty').addEventListener('click',
 						break;
 				}
 				document.getElementById('usedFifty').style.visibility = 'visible';
-			}
+				document.getElementById('center').style.visibility = 'hidden';
+			})
+			//使用しない場合
+			document.getElementById('nobtn').addEventListener('click', function () {
+				document.getElementById('center').style.visibility = 'hidden';
+			})
 		}
 	}, false
 );
@@ -247,39 +273,45 @@ function elaseAnswer(arrayAnswer) {
 document.getElementById('telephone').addEventListener('click',
 	function () {
 		if (telFlg) {
-			if (window.confirm('テレフォンを使いますか?')) {
-				window.alert('このウインドウを閉じると60秒のカウントダウンが始まります。\nその間に電話をかけて下さい。');
-				telFlg = false;
-				document.getElementById('tel').style.visibility = 'visible';
-				reculc();
-
-			}
+			document.getElementById('center').style.visibility = 'visible';
+			document.getElementById('center-content').innerHTML = `<p>テレフォンを使用しますか？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
+			//使用する場合
+			document.getElementById('yesbtn').addEventListener('click', function () {
+				document.getElementById('center-content').innerHTML = `<p>このボタンをクリックするとテレフォン開始です。</p><button id="startbtn" class="btn">START</button>`;
+				document.getElementById('startbtn').addEventListener('click', function () {
+					telFlg = false;
+					let countdown = setInterval(function () {
+						reculc();
+						if (teltime < 0) {
+							clearInterval(countdown);
+							document.getElementById('usedTel').style.visibility = 'visible';
+							document.getElementById('center').style.visibility = 'hidden';
+						}
+					}, 1000);
+				})
+			})
+			//使用しない場合
+			document.getElementById('nobtn').addEventListener('click', function () {
+				document.getElementById('center').style.visibility = 'hidden';
+			})
 		}
 	}, false
 );
 
 function reculc() {
-	let time = document.getElementById('tel').textContent;
-	time--;
-	document.getElementById('tel').textContent = time;
-	if (time >= 0) {
-		refresh();
-	} else {
-		document.getElementById('usedTel').style.visibility = 'visible';
-		setTimeout(document.getElementById('tel').style.visibility = 'hidden', 1000);
-	}
+	teltime--;
+	document.getElementById('center-content').innerHTML = `<h1>${teltime}</h1>`;
+};
 
-}
-
-function refresh() {
-	setTimeout(reculc, 1000);
-}
 
 //オーディエンス
 document.getElementById('audienc').addEventListener('click',
 	function () {
 		if (audFlg) {
-			if (window.confirm('オーディエンスを使いますか?')) {
+			document.getElementById('center').style.visibility = 'visible';
+			document.getElementById('center-content').innerHTML = `<p>オーディエンスを使用しますか？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
+			//使用する場合
+			document.getElementById('yesbtn').addEventListener('click',()=>{
 				audFlg = false;
 				const audArray = [200, 150, 100, 50, 0];
 				let a = 0;
@@ -327,7 +359,11 @@ document.getElementById('audienc').addEventListener('click',
 				document.getElementById('answer3').textContent = 'C.' + per_c + '%';
 				document.getElementById('answer4').textContent = 'D.' + per_d + '%';
 				document.getElementById('usedAud').style.visibility = 'visible';
-			}
+				document.getElementById('center').style.visibility = 'hidden';
+			})
+			document.getElementById('nobtn').addEventListener('click', function () {
+				document.getElementById('center').style.visibility = 'hidden';
+			})
 		}
 	}, false
 );

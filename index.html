@@ -13,7 +13,6 @@
 		gtag('js', new Date());
 
 		gtag('config', 'G-26YZJXWTQK');
-
 	</script>
 	<meta charset="UTF-8">
 	<title>クイズ・ミリオネア</title>
@@ -22,7 +21,7 @@
 </head>
 
 <body>
-	<header>
+	<header id="header">
 		<p id="name">You</p>
 		<p id="money">Price</p>
 		<ul id="lifeline">
@@ -41,8 +40,16 @@
 		</div>
 	</header>
 	<main>
-		<!--       telephone-->
-		<span id="tel">60</span>
+		<div id="center">
+			<div id="center-content">
+				<p id="center-msg">
+					あなたの人生を変えるかもしれないクイズ・ミリオネア。
+					<br>まずは、あなたの名前を入力してください
+				</p>
+				<input type="text" id="center-input">
+				<button id="namebtn" class="btn">決定</button>
+			</div>
+		</div>
 		<!--        audience-->
 		<div id="audience">
 			<ul>
@@ -64,7 +71,6 @@
 				</li>
 			</ul>
 		</div>
-
 	</main>
 	<footer>
 		<div id="quiz">
@@ -80,6 +86,4 @@
 		</div>
 	</footer>
 	<script src="script.js"></script>
-</body>
-
-</html>
+</body></html>
