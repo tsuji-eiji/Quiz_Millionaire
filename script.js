@@ -94,55 +94,57 @@ function shuffle(array) {
 const ansArray = document.getElementsByClassName('select');
 for (let item of ansArray) {
 	item.addEventListener('click', function (e) {
-		if (ansFlg) {
-			resetAns();
-			ans = e.target.id;
-			coloredAns(ans, '#FDAE1D');
-			ansFlg = false;
-			const selectedAns = document.getElementById(ans).textContent;
-			document.getElementById('center-content').innerHTML = `<p>${selectedAns}、ファイナルアンサー？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
-			document.getElementById('center').style.visibility = 'visible';
-			//ファイナルアンサーではいを選んだとき
-			document.getElementById('yesbtn').addEventListener('click', function () {
-				ansFlg = false;
-				const waitTime = 1000;
-				switch (ans) {
-					case 'a':
-						if (question[6] === 1) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-					case 'b':
-						if (question[6] === 2) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-					case 'c':
-						if (question[6] === 3) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-					case 'd':
-						if (question[6] === 4) {
-							setTimeout(clear, waitTime);
-						} else {
-							setTimeout(failed, waitTime);
-						}
-						break;
-				}
-			});
-			//ファイナルアンサーでいいえを選んだとき
-			document.getElementById('nobtn').addEventListener('click', function () {
-				ansFlg = true;
-				document.getElementById('center').style.visibility = 'hidden';
+		if (item.textContent !== '　') {
+			if (ansFlg) {
 				resetAns();
-			});
+				ans = e.target.id;
+				coloredAns(ans, '#FDAE1D');
+				ansFlg = false;
+				const selectedAns = document.getElementById(ans).textContent;
+				document.getElementById('center-content').innerHTML = `<p>${selectedAns}、ファイナルアンサー？？</p><button id="yesbtn" class="btn">はい</button><button id="nobtn" class="btn">いいえ</button>`;
+				document.getElementById('center').style.visibility = 'visible';
+				//ファイナルアンサーではいを選んだとき
+				document.getElementById('yesbtn').addEventListener('click', function () {
+					ansFlg = false;
+					const waitTime = 1000;
+					switch (ans) {
+						case 'a':
+							if (question[6] === 1) {
+								setTimeout(clear, waitTime);
+							} else {
+								setTimeout(failed, waitTime);
+							}
+							break;
+						case 'b':
+							if (question[6] === 2) {
+								setTimeout(clear, waitTime);
+							} else {
+								setTimeout(failed, waitTime);
+							}
+							break;
+						case 'c':
+							if (question[6] === 3) {
+								setTimeout(clear, waitTime);
+							} else {
+								setTimeout(failed, waitTime);
+							}
+							break;
+						case 'd':
+							if (question[6] === 4) {
+								setTimeout(clear, waitTime);
+							} else {
+								setTimeout(failed, waitTime);
+							}
+							break;
+					}
+				});
+				//ファイナルアンサーでいいえを選んだとき
+				document.getElementById('nobtn').addEventListener('click', function () {
+					ansFlg = true;
+					document.getElementById('center').style.visibility = 'hidden';
+					resetAns();
+				});
+			}
 		}
 	})
 };
