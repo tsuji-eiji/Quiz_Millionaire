@@ -17,7 +17,11 @@ let ans = '';
 let teltime = 61;
 
 document.getElementById('namebtn').addEventListener('click', function () {
-	document.getElementById('name').textContent = document.getElementById('center-input').value;
+	let name = document.getElementById('center-input').value;
+	if(name === ''){
+		name = '　';
+	}
+	document.getElementById('name').textContent = name;
 	document.getElementById('header').style.visibility = 'visible';
 	quizMode();
 	init();
@@ -379,7 +383,7 @@ document.getElementById('audienc').addEventListener('click',
 					const per_b = Math.round(b / total * 100);
 					const per_c = Math.round(c / total * 100);
 					const per_d = Math.round(d / total * 100);
-					console.log(per_a + '%');
+					//棒グラフの高さ
 					document.getElementById('bar1').style.height = per_a + '%';
 					document.getElementById('bar2').style.height = per_b + '%';
 					document.getElementById('bar3').style.height = per_c + '%';

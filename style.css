@@ -9,26 +9,23 @@ html {
 	font-size: 100%;
 	width: 100%;
 	height: 100%;
-	background-size: 110%;
-	background-position: center;
-	min-height: 100vh;
 }
 
 body {
 	height: 100%;
 }
 
-main {
-	height: 60%;
+header {
+	height: 25%;
+	width: 45%;
+	text-align: center;
+	margin-left: 53%;
+	visibility: hidden;
 }
 
-#header {
-	width: 30%;
+main {
+	height: 50%;
 	text-align: center;
-	margin-top: .5rem;
-	margin-bottom: .5rem;
-	margin-left: 68%;
-	visibility: hidden;
 }
 
 #name {
@@ -45,10 +42,11 @@ main {
 #lifeline {
 	display: flex;
 	margin-top: 5px;
+	width: 100%;
 }
 
 #lifeline li {
-	width: 33%;
+	width: 5rem;
 	list-style-type: none;
 	text-decoration: none;
 	display: block;
@@ -63,42 +61,35 @@ main {
 }
 
 .used {
-	height: 3rem;
+	height: 1.1rem;
 }
 
 #usedFifty,
 #usedTel,
 #usedAud {
 	position: absolute;
-	top: 11%;
+	top: 13%;
 	visibility: hidden;
-	width: 86px;
+	width: 3.4rem;
 }
 
 #usedFifty {
-	right: 15.3%;
+	right: 31%;
 }
 
 #usedTel {
-	right: 8.7%;
+	right: 15.2%;
 }
 
 #usedAud {
-	right: 2.1%;
-}
-
-
-main {
-	/*	margin-top: 40px;*/
-	text-align: center;
+	right: 0.9%;
 }
 
 #center {
 	margin: auto 1rem;
 	width: 90%;
-	height: auto;
+	height: 50%;
 	align-items: center;
-	
 }
 
 #center-content {
@@ -106,12 +97,13 @@ main {
 	background-color: rgba(60, 64, 67, 0.5);
 	border: 2px double #fff;
 }
+
 #center-content p {
 	margin-top: 0.5rem;
 }
 
 #center-content h1 {
-	margin-top: 2.5rem;
+/*	margin-top: .5rem;*/
 }
 
 #center-input {
@@ -119,6 +111,10 @@ main {
 	border: 1px double black;
 	width: 90%;
 	margin-top: 0.7rem;
+}
+
+footer {
+	height: 20%;
 }
 
 #tel {
@@ -145,17 +141,14 @@ main {
 /* audience用 */
 #audience {
 	visibility: hidden;
-/*	position: fixed;*/
-	border: 1px solid #5F7EB2;
-	width: 98%;
-	height: 30%;
-/*	margin-left: 68%;*/
-	bottom: 35%;
+	border: 2px solid #5F7EB2;
+	width: 99%;
+	height: 50%;
+	margin: auto;
 	background-color: #111;
 }
 
 #audience ul {
-/*	position: relative;*/
 	width: 100%;
 	height: 100%;
 	bottom: 0;
@@ -175,13 +168,16 @@ main {
 	bottom: 0;
 }
 
+.outside-bar {
+	transform: scale(-1, -1);
+	height: 80%
+}
+
 .bar {
-/*	width: 40px;*/
-	margin: 0 auto;
-	position: absolute;
-	background: -moz-linear-gradient(top, #96E3F4, #963A82);
-	background: -webkit-linear-gradient(top, #96E3F4, #963A82);
-	background: linear-gradient(to bottom, #96E3F4, #963A82);
+	background: -moz-linear-gradient(top, #963A82, #96E3F4);
+	background: -webkit-linear-gradient(top, #963A82, #96E3F4);
+	background: linear-gradient(to bottom, #963A82, #96E3F4);
+	
 }
 
 /* 問題部用 */
@@ -207,7 +203,6 @@ main {
 	display: grid;
 	grid-template-columns: 50% 50%;
 	list-style: none;
-	font-size: .7rem;
 }
 
 #answer li {
@@ -270,14 +265,14 @@ main {
 	}
 
 	.used {
-		height: 3rem;
+		height: 1.4rem;
 	}
 
 	#usedFifty,
 	#usedTel,
 	#usedAud {
 		position: absolute;
-		top: 11%;
+		top: 12%;
 		visibility: hidden;
 		width: 86px;
 	}
@@ -296,18 +291,14 @@ main {
 
 
 	main {
-		/*	margin-top: 40px;*/
 		text-align: center;
 	}
 
 	#center {
-		margin: 8rem auto;
+		margin: 4rem auto 0;
 		width: 680px;
-		height: 150px;
 		align-items: center;
 		font-size: 1.4rem;
-		background-color: rgba(60, 64, 67, 0.5);
-		border: 3px double #fff;
 	}
 
 	#center-content {
@@ -315,7 +306,7 @@ main {
 	}
 
 	#center-content h1 {
-		margin-top: 2.5rem;
+		padding: 1.45rem;
 	}
 
 	#center-input {
@@ -372,13 +363,20 @@ main {
 		width: 23%;
 		bottom: 0;
 	}
+	
+	.outside-bar {
+		height: 90%;
+	}
+	
+	#audience ul li p {
+		position: absolute;
+		margin-left: .4rem;
+		bottom: auto;
+	}
 
 	.bar {
 		width: 40px;
 		margin: 0 auto;
-		background: -moz-linear-gradient(top, #96E3F4, #963A82);
-		background: -webkit-linear-gradient(top, #96E3F4, #963A82);
-		background: linear-gradient(to bottom, #96E3F4, #963A82);
 	}
 
 	/* 問題部用 */

@@ -18,6 +18,7 @@
 	<meta charset="UTF-8">
 	<title>クイズ・ミリオネア</title>
 	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,19 +27,22 @@
 		<p id="name">You</p>
 		<p id="money">Price</p>
 		<ul id="lifeline">
-			<li id="fifty-fifty">50×50</li>
-			<li id="telephone">TEL</li>
-			<li id="audienc">AUD</li>
-			<img src="used.png" id="usedFifty" class="used">
-			<img src="used.png" id="usedTel" class="used">
-			<img src="used.png" id="usedAud" class="used">
+			<li id="fifty-fifty">50×50<img src="used.png" id="usedFifty" class="used"></li>
+			<li id="telephone">
+				<i class="fa fa-phone"></i>
+				<img src="used.png" id="usedTel" class="used">
+			</li>
+			<li id="audienc">
+				<i class="fas fa-users"></i>
+				<img src="used.png" id="usedAud" class="used">
+			</li>
 		</ul>
 	</header>
 	<main>
 		<div id="center">
 			<div id="center-content">
 				<p id="center-msg">
-					あなたの人生を変えるかもしれないクイズ・ミリオネア。
+					あなたの人生を変えるかもしれない<br>クイズ・ミリオネア。
 					<br>まずは、あなたの名前を入力してください
 				</p>
 				<input type="text" id="center-input">
@@ -49,24 +53,32 @@
 		<div id="audience">
 			<ul>
 				<li>
-					<div id="bar1" class="bar"></div>
+					<div class="outside-bar">
+						<div id="bar1" class="bar"></div>
+					</div>
 					<p id="answer1" class="answer"></p>
 				</li>
 				<li>
+				<div class="outside-bar">
 					<div id="bar2" class="bar"></div>
+					</div>
 					<p id="answer2" class="answer"></p>
 				</li>
 				<li>
+				<div class="outside-bar">
 					<div id="bar3" class="bar"></div>
+					</div>
 					<p id="answer3" class="answer"></p>
 				</li>
 				<li>
+				<div class="outside-bar">
 					<div id="bar4" class="bar"></div>
+					</div>
 					<p id="answer4" class="answer"></p>
 				</li>
 			</ul>
 		</div>
-		
+
 	</main>
 	<footer>
 		<div id="quiz">
