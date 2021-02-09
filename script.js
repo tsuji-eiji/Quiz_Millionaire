@@ -379,10 +379,11 @@ document.getElementById('audienc').addEventListener('click',
 					const per_b = Math.round(b / total * 100);
 					const per_c = Math.round(c / total * 100);
 					const per_d = Math.round(d / total * 100);
-					document.getElementById('bar1').style.height = per_a * 2.5 + 'px';
-					document.getElementById('bar2').style.height = per_b * 2.5 + 'px';
-					document.getElementById('bar3').style.height = per_c * 2.5 + 'px';
-					document.getElementById('bar4').style.height = per_d * 2.5 + 'px';
+					console.log(per_a + '%');
+					document.getElementById('bar1').style.height = per_a + '%';
+					document.getElementById('bar2').style.height = per_b + '%';
+					document.getElementById('bar3').style.height = per_c + '%';
+					document.getElementById('bar4').style.height = per_d + '%';
 					document.getElementById('answer1').textContent = 'A.' + per_a + '%';
 					document.getElementById('answer2').textContent = 'B.' + per_b + '%';
 					document.getElementById('answer3').textContent = 'C.' + per_c + '%';

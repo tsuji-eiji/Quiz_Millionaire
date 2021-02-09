@@ -98,13 +98,16 @@ main {
 	width: 90%;
 	height: auto;
 	align-items: center;
-	background-color: rgba(60, 64, 67, 0.5);
-	border: 3px double #fff;
+	
 }
 
 #center-content {
-	margin: 0.5rem;
 	padding: 40px auto;
+	background-color: rgba(60, 64, 67, 0.5);
+	border: 2px double #fff;
+}
+#center-content p {
+	margin-top: 0.5rem;
 }
 
 #center-content h1 {
@@ -142,32 +145,40 @@ main {
 /* audience用 */
 #audience {
 	visibility: hidden;
-	position: fixed;
+/*	position: fixed;*/
 	border: 1px solid #5F7EB2;
-	width: 20%;
-	height: 300px;
-	margin-left: 78%;
+	width: 98%;
+	height: 30%;
+/*	margin-left: 68%;*/
 	bottom: 35%;
 	background-color: #111;
-	z-index: 10000;
 }
 
 #audience ul {
-	position: absolute;
+/*	position: relative;*/
 	width: 100%;
+	height: 100%;
 	bottom: 0;
 }
 
 #audience ul li {
 	display: inline-block;
 	text-align: center;
+	position: relative;
 	width: 23%;
+	height: 100%;
+	bottom: 0;
+}
+
+#audience ul li p {
+	position: absolute;
 	bottom: 0;
 }
 
 .bar {
-	width: 40px;
+/*	width: 40px;*/
 	margin: 0 auto;
+	position: absolute;
 	background: -moz-linear-gradient(top, #96E3F4, #963A82);
 	background: -webkit-linear-gradient(top, #96E3F4, #963A82);
 	background: linear-gradient(to bottom, #96E3F4, #963A82);
@@ -181,6 +192,7 @@ main {
 	left: 0;
 	right: 0;
 	margin: auto;
+	
 }
 
 #ask {
@@ -195,6 +207,7 @@ main {
 	display: grid;
 	grid-template-columns: 50% 50%;
 	list-style: none;
+	font-size: .7rem;
 }
 
 #answer li {
