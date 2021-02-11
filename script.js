@@ -9,6 +9,7 @@ let telFlg = true;
 let audFlg = true;
 
 //各種配列
+let json = new Array;
 let questions = new Array;
 let question = new Array;
 
@@ -39,9 +40,21 @@ function msgMode() {
 	document.getElementById('center').style.visibility = 'visible';
 };
 
+//問題作成
+$(document).ready(function(){
+	//ファイルの読み込み
+	$.ajax({url:'questions.json',dataType:'json'})
+	.done(function(data){
+		json = data;
+	})
+	.fail(function(){
+		window.alert('読み込みエラー');
+	});
+});
+
 function init() {
 	//問題の作成
-	questions = getCsv();
+	questions = getQuestions();
 	//ランダムに並び替え
 	questions = shuffle(questions);
 	//ループしながら問題を選択
@@ -78,6 +91,15 @@ function getCsv() {
 	const array5 = [5, '総合格闘技のリングで、グレイシー一族と対戦していない日本人は次の誰。', '桜庭和志', '石田光洋', '中邑真輔', '田村潔司', 2];
 	const questions = [array1, array2, array3, array4, array5];
 	return questions;
+}
+
+function getQuestions(){
+	const array = new Array;
+	json.forEach(function(item,index){
+		const element = [item.level,item.question,item.a,item.b,item.c,item.d,item.answer];
+		array.push(element);
+	})
+	return array;
 }
 
 
