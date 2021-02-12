@@ -82,17 +82,6 @@ function makeQuestion(questions) {
 	}
 }
 
-//問題作成 ※開発中用
-function getCsv() {
-	const array1 = [1, '次のうち、道路信号に使われていない色はどれ。', '赤', '青', '黒', '黄', 3];
-	const array2 = [2, '次のうち、M-1グランプリで優勝していないコンビはどれ。', 'ミルクボーイ', 'マヂカルラブリー', '千鳥', 'アンタッチャブル', 3];
-	const array3 = [3, '次のうち、The Beatlesのメンバーなのは誰。', 'ミック・ジャガー', 'ポール・マッカートニー', 'スティーヴン・タイラー', 'カート・コバーン', 2];
-	const array4 = [4, '次のうち、テネシーウイスキーはどれ。', 'ジャック・ダニエル', 'ジョニー・ウォーカー', 'ジムビーム', 'ラフロイグ', 1];
-	const array5 = [5, '総合格闘技のリングで、グレイシー一族と対戦していない日本人は次の誰。', '桜庭和志', '石田光洋', '中邑真輔', '田村潔司', 2];
-	const questions = [array1, array2, array3, array4, array5];
-	return questions;
-}
-
 function getQuestions(){
 	const array = new Array;
 	json.forEach(function(item,index){
