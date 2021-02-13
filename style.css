@@ -17,9 +17,9 @@ body {
 
 header {
 	height: 25%;
-	width: 45%;
+	width: 65%;
 	text-align: center;
-	margin-left: 53%;
+	margin-left: 33%;
 	visibility: hidden;
 }
 
@@ -43,6 +43,7 @@ main {
 	display: flex;
 	margin-top: 5px;
 	width: 100%;
+	padding: .7rem 0
 }
 
 #lifeline li {
@@ -53,7 +54,8 @@ main {
 	background-color: #22204D;
 	border: 3px solid #5F7EB2;
 	border-radius: 50%;
-	font-size: 1px;
+	font-size: 14px;
+	padding: .7rem 0;
 }
 
 #lifeline li:hover {
