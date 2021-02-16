@@ -209,9 +209,9 @@ function retry() {
 		fiftyFlg = true;
 		telFlg = true;
 		audFlg = true;
-		document.getElementById('usedFifty').style.visibility = 'hidden';
-		document.getElementById('usedTel').style.visibility = 'hidden';
-		document.getElementById('usedAud').style.visibility = 'hidden';
+		document.getElementById('fifty-fifty').classList.remove('used');
+		document.getElementById('telephone').classList.remove('used');
+		document.getElementById('audienc').classList.remove('used');
 		quizMode();
 		init();
 	})
