@@ -285,7 +285,7 @@ document.getElementById('fifty-fifty').addEventListener('click',
 							elaseAnswer(arrayAnswer);
 							break;
 					}
-					document.getElementById('usedFifty').style.visibility = 'visible';
+					document.getElementById('fifty-fifty').classList.add('used');
 					document.getElementById('center').style.visibility = 'hidden';
 					ansFlg = true;
 				})
@@ -323,7 +323,7 @@ document.getElementById('telephone').addEventListener('click',
 							reculc();
 							if (teltime < 0) {
 								clearInterval(countdown);
-								document.getElementById('usedTel').style.visibility = 'visible';
+								document.getElementById('telephone').classList.add('used');
 								document.getElementById('center').style.visibility = 'hidden';
 								ansFlg = true;
 							}
@@ -403,7 +403,7 @@ document.getElementById('audienc').addEventListener('click',
 					document.getElementById('answer2').textContent = 'B.' + per_b + '%';
 					document.getElementById('answer3').textContent = 'C.' + per_c + '%';
 					document.getElementById('answer4').textContent = 'D.' + per_d + '%';
-					document.getElementById('usedAud').style.visibility = 'visible';
+					document.getElementById('audienc').classList.add('used');
 					document.getElementById('center').style.visibility = 'hidden';
 					ansFlg = true;
 				})
