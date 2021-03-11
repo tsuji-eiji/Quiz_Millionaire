@@ -85,9 +85,12 @@ function makeQuestion(questions) {
 function getQuestions(){
 	const array = new Array;
 	json.forEach(function(item,index){
-		const element = [item.level,item.question,item.a,item.b,item.c,item.d,item.answer];
-		array.push(element);
+		if(!item.delflg){
+			const element = [item.level,item.question,item.a,item.b,item.c,item.d,item.answer];
+			array.push(element);
+		}
 	})
+	console.log(array);
 	return array;
 }
 
